@@ -4,7 +4,6 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
