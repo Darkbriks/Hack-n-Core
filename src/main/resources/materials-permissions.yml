@@ -1,0 +1,86 @@
+# Format:
+# nom-de-la-permission:
+#   items:
+#     - nom-de-l'item1
+#     - nom-de-l'item2
+#   display-name: "Nom de la permission affiché au joueur"
+#
+# /!\ Un bloc ne peut posséder qu'une seule permission
+#     Si un bloc est utilisé dans plusieurs permissions, seule la dernière occurence sera prise en compte
+#
+# /!\ Les noms des items doivent être en majuscules
+#
+# Une permission peut ne pas contenir d'items
+
+HacknCore.materiaux.bois:
+    items:
+        - WOODEN_SWORD
+        - WOODEN_PICKAXE
+        - WOODEN_AXE
+        - WOODEN_SHOVEL
+        - WOODEN_HOE
+    display-name: "Permission Bois"
+
+HacknCore.materiaux.bois.cuir:
+  items:
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+  display-name: "Permission Bois et Cuir"
+
+HacknCore.materiaux.pierre:
+    items:
+        - STONE_SWORD
+        - STONE_PICKAXE
+        - STONE_AXE
+        - STONE_SHOVEL
+        - STONE_HOE
+    display-name: "Permission Pierre"
+
+HacknCore.materiaux.pierre.maille:
+    items:
+        - CHAINMAIL_HELMET
+        - CHAINMAIL_CHESTPLATE
+        - CHAINMAIL_LEGGINGS
+        - CHAINMAIL_BOOTS
+    display-name: "Permission Pierre et Maille"
+
+HacknCore.materiaux.fer:
+    items:
+        - IRON_SWORD
+        - IRON_PICKAXE
+        - IRON_AXE
+        - IRON_SHOVEL
+        - IRON_HOE
+        - IRON_HELMET
+        - IRON_CHESTPLATE
+        - IRON_LEGGINGS
+        - IRON_BOOTS
+    display-name: "Permission Fer"
+
+HacknCore.materiaux.diamant:
+    items:
+        - DIAMOND_SWORD
+        - DIAMOND_PICKAXE
+        - DIAMOND_AXE
+        - DIAMOND_SHOVEL
+        - DIAMOND_HOE
+        - DIAMOND_HELMET
+        - DIAMOND_CHESTPLATE
+        - DIAMOND_LEGGINGS
+        - DIAMOND_BOOTS
+    display-name: "Permission Diamant"
+
+HacknCore.materiaux.netherite:
+    items:
+        - NETHERITE_SWORD
+        - NETHERITE_PICKAXE
+        - NETHERITE_AXE
+        - NETHERITE_SHOVEL
+        - NETHERITE_HOE
+        - NETHERITE_HELMET
+        - NETHERITE_CHESTPLATE
+        - NETHERITE_LEGGINGS
+        - NETHERITE_BOOTS
+    display-name: "Permission Netherite"

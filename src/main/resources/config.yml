@@ -1,0 +1,7 @@
+debug: true
+verbose: true
+materials-permissions-file: materials-permissions.yml
+logger:
+  use-prefix: true
+  legacy-prefix: "§2§l[§6§lHack'n'Craft§2§l] §r"
+  prefix: "<dark_green><bold>[<gold><bold>Hack'n'Craft<dark_green><bold>]<reset> "
