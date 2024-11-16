@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
-import org.darkbriks.hacknCore.HacknCore;
 import org.darkbriks.hacknCore.Logger;
 
 import java.util.Objects;
@@ -100,7 +99,7 @@ public class PlayerListener implements Listener
                     event.getInventory().setResult(null);
                 }
             }
-            catch (Exception e) { return; }
+            catch (Exception ignored) {}
         }
     }
 
@@ -134,7 +133,7 @@ public class PlayerListener implements Listener
                 exchangeForbiddenItemWithValidItem(player, event.getNewSlot());
             }
         }
-        catch (Exception e) { return; }
+        catch (Exception ignored) {}
     }
 
     @EventHandler

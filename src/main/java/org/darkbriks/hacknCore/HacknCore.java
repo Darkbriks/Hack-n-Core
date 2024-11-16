@@ -30,7 +30,7 @@ public final class HacknCore extends JavaPlugin
             saveHacknCoreConfig();
 
             //logger = new Logger(this);
-            Logger.getInstance(this);
+            Logger.init(this);
             Logger.info(Logger.getMessage("hackncore.hackncore.onenable.enable.start", PLUGIN_NAME, PLUGIN_VERSION, DEBUG, VERBOSE), true);
 
             initializePermissions();

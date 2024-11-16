@@ -42,16 +42,9 @@ public class Logger
         messages = ResourceBundle.getBundle("languages/" + locale.getLanguage() + "_" + locale.getCountry());
     }
 
-    @NotNull
-    static public Logger getInstance(HacknCore plugin)
+    static public void init(HacknCore plugin)
     {
         if (instance == null) { instance = new Logger(plugin); }
-        return instance;
-    }
-
-    static public Logger getInstance()
-    {
-        return instance;
     }
 
     static public String getMessage(String key, Object... args)
@@ -173,7 +166,7 @@ public class Logger
         verbose(message, plugin.getServer().getConsoleSender(), legacy);
     }
 
-    static public void test()
+    /*static public void test()
     {
         info("Legacy Logger testing started", true);
         info("Info test", true);
@@ -215,5 +208,5 @@ public class Logger
         debug("Debug test", player, false);
         verbose("Verbose test", player, false);
         info("Modern Logger testing ended", player, false);
-    }
+    }*/
 }
