@@ -1,5 +1,6 @@
 debug: true
 verbose: true
+permissions-file: permissions.yml
 materials-permissions-file: materials-permissions.yml
 logger:
   use-prefix: true

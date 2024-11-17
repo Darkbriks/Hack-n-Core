@@ -59,6 +59,19 @@ HacknCore.materiaux.fer:
         - IRON_BOOTS
     display-name: "Permission Fer"
 
+HacknCore.materiaux.or:
+    items:
+        - GOLDEN_SWORD
+        - GOLDEN_PICKAXE
+        - GOLDEN_AXE
+        - GOLDEN_SHOVEL
+        - GOLDEN_HOE
+        - GOLDEN_HELMET
+        - GOLDEN_CHESTPLATE
+        - GOLDEN_LEGGINGS
+        - GOLDEN_BOOTS
+    display-name: "Permission Or"
+
 HacknCore.materiaux.diamant:
     items:
         - DIAMOND_SWORD

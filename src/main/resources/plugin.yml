@@ -3,7 +3,7 @@ version: '0.1.0'
 main: org.darkbriks.hacknCore.HacknCore
 api-version: '1.21'
 authors: [ Darkbriks ]
-website: https://github.com/Darkbriks
+website: https://github.com/Darkbriks/Hack-n-Core
 
 commands:
   get-item-permission:
@@ -16,41 +16,3 @@ permissions:
   HacknCore.permission.see:
     description: "Allows the player to see the permission required to use an item."
     default: true
-
-  HacknCore.materiaux.bois:
-    description: "Allows the player to use items with a wood permission requirement."
-    default: true
-  HacknCore.materiaux.bois.cuir:
-    description: "Allows the player to use items with a wood and leather permission requirement."
-    default: true
-  HacknCore.materiaux.pierre:
-    description: "Allows the player to use items with a stone permission requirement."
-    default: false
-  HacknCore.materiaux.pierre.maille:
-    description: "Allows the player to use items with a stone and chainmail permission requirement."
-    default: false
-  HacknCore.materiaux.fer:
-    description: "Allows the player to use items with an iron permission requirement."
-    default: false
-  HacknCore.materiaux.diamant:
-    description: "Allows the player to use items with a diamond permission requirement."
-    default: false
-  HacknCore.materiaux.netherite:
-    description: "Allows the player to use items with a netherite permission requirement."
-    default: false
-
-  HacknCore.sleep.1:
-    description: "Allows the player to sleep in a bed to get 1 heart per second."
-    default: true
-  HacknCore.sleep.2:
-    description: "Allows the player to sleep in a bed to get 2 hearts per second."
-    default: false
-  HacknCore.sleep.3:
-    description: "Allows the player to sleep in a bed to get 3 hearts per second."
-    default: false
-  HacknCore.sleep.4:
-    description: "Allows the player to sleep in a bed to get 4 hearts per second."
-    default: false
-  HacknCore.sleep.5:
-    description: "Allows the player to sleep in a bed to get 5 hearts per second."
-    default: false

@@ -3,6 +3,7 @@ package org.darkbriks.hacknCore;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.darkbriks.hacknCore.permission.MaterialPermission;
+import org.darkbriks.hacknCore.permission.PermissionLoader;
 import org.darkbriks.hacknCore.permission.PlayerListener;
 import org.darkbriks.hacknCore.permission.commands.GetItemPermissionCommand;
 import org.darkbriks.hacknCore.sleep.Bed;
@@ -16,6 +17,7 @@ public final class HacknCore extends JavaPlugin
 
     public final boolean DEBUG = getConfig().getBoolean("debug");
     public final boolean VERBOSE = getConfig().getBoolean("verbose");
+    public final String PERMISSIONS_FILE = getConfig().getString("permissions-file");
     public final String MATERIALS_PERMISSIONS_FILE = getConfig().getString("materials-permissions-file");
 
     @Deprecated
@@ -29,10 +31,10 @@ public final class HacknCore extends JavaPlugin
         {
             saveHacknCoreConfig();
 
-            //logger = new Logger(this);
             Logger.init(this);
             Logger.info(Logger.getMessage("hackncore.hackncore.onenable.enable.start", PLUGIN_NAME, PLUGIN_VERSION, DEBUG, VERBOSE), true);
 
+            loadPermissions();
             initializePermissions();
             registerCrafts();
             registerCommands();
@@ -57,9 +59,24 @@ public final class HacknCore extends JavaPlugin
     private void saveHacknCoreConfig()
     {
         saveDefaultConfig();
+        saveResource("permissions.yml", false);
         saveResource("materials-permissions.yml", false);
         saveResource("languages/en_US.properties", false);
         saveResource("languages/fr_FR.properties", false);
+    }
+
+    private void loadPermissions()
+    {
+        try
+        {
+            Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.loadpermissions.start"), true);
+            PermissionLoader.loadPermissions(this);
+            Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.loadpermissions.success"), true);
+        }
+        catch (Exception e)
+        {
+            Logger.fatal(Logger.getMessage("hackncore.hackncore.onenable.loadpermissions.error", e.getMessage()), true);
+        }
     }
 
     private void initializePermissions()
