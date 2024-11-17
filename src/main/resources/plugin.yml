@@ -1,5 +1,5 @@
 name: HacknCore
-version: '0.1.0'
+version: '0.1.1'
 main: org.darkbriks.hacknCore.HacknCore
 api-version: '1.21'
 authors: [ Darkbriks ]
