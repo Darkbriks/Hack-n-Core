@@ -38,3 +38,37 @@ HacknCore.sleep.4:
 HacknCore.sleep.5:
   description: "Allows the player to sleep in a bed to get 5 hearts per second."
   default: "false"
+
+HacknCore.skill.agility:
+  description: "Allows the player to use the agility skill."
+  default: "false"
+HacknCore.skill.alchemy:
+  description: "Allows the player to use the alchemy skill."
+  default: "false"
+HacknCore.skill.archery:
+    description: "Allows the player to use the archery skill."
+    default: "false"
+HacknCore.skill.defense:
+  description: "Allows the player to use the defense skill."
+  default: "false"
+HacknCore.skill.enchanting:
+  description: "Allows the player to use the enchanting skill."
+  default: "false"
+HacknCore.skill.excavation:
+  description: "Allows the player to use the excavation skill."
+  default: "false"
+HacknCore.skill.farming:
+  description: "Allows the player to use the farming skill."
+  default: "false"
+HacknCore.skill.fighting:
+  description: "Allows the player to use the fighting skill."
+  default: "false"
+HacknCore.skill.fishing:
+  description: "Allows the player to use the fishing skill."
+  default: "false"
+HacknCore.skill.foraging:
+  description: "Allows the player to use the foraging skill."
+  default: "false"
+HacknCore.skill.mining:
+    description: "Allows the player to use the mining skill."
+    default: "false"

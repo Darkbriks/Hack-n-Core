@@ -1,6 +1,8 @@
 package org.darkbriks.hacknCore.skills;
 
 import dev.aurelium.auraskills.api.skill.Skills;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,8 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.darkbriks.hacknCore.HacknCore;
-import org.darkbriks.hacknCore.playerData.PlayerData;
-import org.darkbriks.hacknCore.playerData.PlayerDataManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,26 +41,17 @@ public class AddSkillCommand implements CommandExecutor, TabExecutor
             return false;
         }
 
-        try
+        Player player = Bukkit.getPlayer(args[0]);
+        if (player == null)
         {
-            PlayerData playerData = PlayerDataManager.getPlayerData(Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
-            if (playerData == null) { sender.sendMessage("An error occurred while loading player data, if this persists, please contact an administrator."); return false; }
-
-            Skills skill = Skills.valueOf(args[1].toUpperCase(Locale.ROOT));
-            playerData.unlockSkill(skill.name());
-            sender.sendMessage("Skill " + skill.name() + " added to player " + args[0]);
-            return true;
-        }
-        catch (NullPointerException e)
-        {
-            sender.sendMessage("Player not found: " + args[0] + ". Please make sure the player is online.");
+            sender.sendMessage("Player " + args[0] + " not found.");
             return false;
         }
-        catch (IllegalArgumentException e)
-        {
-            sender.sendMessage("Invalid skill name: " + args[1]);
-            return false;
-        }
+        User user = plugin.getLuckPerms().getPlayerAdapter(Player.class).getUser(player);
+        user.data().add(Node.builder("HacknCore.skill." + args[1].toLowerCase(Locale.ROOT)).build());
+        plugin.getLuckPerms().getUserManager().saveUser(user);
+        sender.sendMessage("Skill " + args[1] + " added to player " + args[0]);
+        return true;
     }
 
     @Override
@@ -77,6 +68,7 @@ public class AddSkillCommand implements CommandExecutor, TabExecutor
         }
         else if (strings.length == 2)
         {
+            // TODO: add support for custom skills
             List<String> skills = new ArrayList<>();
             for (Skills skill : Skills.values())
             {

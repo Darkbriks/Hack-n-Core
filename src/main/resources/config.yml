@@ -2,7 +2,6 @@ debug: true
 verbose: true
 permissions-file: permissions.yml
 materials-permissions-file: materials-permissions.yml
-player-data-folder: playerdata
 logger:
   use-prefix: true
   legacy-prefix: "§2§l[§6§lHack'n'Craft§2§l] §r"

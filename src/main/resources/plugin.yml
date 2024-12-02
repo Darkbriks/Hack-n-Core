@@ -6,7 +6,7 @@ authors: [ Darkbriks ]
 website: https://github.com/Darkbriks/Hack-n-Core
 
 softdepend: ["AuraSkills"]
-depend: ["PlaceholderAPI"]
+depend: ["PlaceholderAPI", "LuckPerms"]
 
 commands:
   get-item-permission:
