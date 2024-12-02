@@ -1,11 +1,15 @@
 package org.darkbriks.hacknCore;
 
+import dev.aurelium.auraskills.api.AuraSkillsApi;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.darkbriks.hacknCore.permission.MaterialPermission;
 import org.darkbriks.hacknCore.permission.PermissionLoader;
 import org.darkbriks.hacknCore.permission.PlayerListener;
 import org.darkbriks.hacknCore.permission.commands.GetItemPermissionCommand;
+import org.darkbriks.hacknCore.playerData.PlayerEvents;
+import org.darkbriks.hacknCore.playerData.PlayerDataManager;
+import org.darkbriks.hacknCore.skills.AddSkillCommand;
 import org.darkbriks.hacknCore.sleep.Bed;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
@@ -19,6 +23,10 @@ public final class HacknCore extends JavaPlugin
     public final boolean VERBOSE = getConfig().getBoolean("verbose");
     public final String PERMISSIONS_FILE = getConfig().getString("permissions-file");
     public final String MATERIALS_PERMISSIONS_FILE = getConfig().getString("materials-permissions-file");
+    public final String PLAYER_DATA_FOLDER = getConfig().getString("player-data-folder");
+
+    private AuraSkillsApi auraSkills;
+    public AuraSkillsApi getAuraSkills() { return auraSkills; }
 
     @Deprecated
     @Override
@@ -31,8 +39,15 @@ public final class HacknCore extends JavaPlugin
         {
             saveHacknCoreConfig();
 
+            auraSkills = AuraSkillsApi.get();
+
             Logger.init(this);
             Logger.info(Logger.getMessage("hackncore.hackncore.onenable.enable.start", PLUGIN_NAME, PLUGIN_VERSION, DEBUG, VERBOSE), true);
+
+            if (auraSkills == null) { Logger.info(Logger.getMessage("hackncore.hackncore.onenable.enable.auraskills.notdetected"), true); }
+            else { Logger.info(Logger.getMessage("hackncore.hackncore.onenable.enable.auraskills.detected"), true); }
+
+            PlayerDataManager.init(this);
 
             loadPermissions();
             initializePermissions();
@@ -53,6 +68,7 @@ public final class HacknCore extends JavaPlugin
     public void onDisable()
     {
         Logger.info(Logger.getMessage("hackncore.hackncore.ondisable.disable.start", PLUGIN_NAME), true);
+        PlayerDataManager.saveAll(false);
         Logger.info(Logger.getMessage("hackncore.hackncore.ondisable.disable.success", PLUGIN_NAME), true);
     }
 
@@ -114,6 +130,7 @@ public final class HacknCore extends JavaPlugin
             Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.registeringcommands.start"), true);
             Objects.requireNonNull(this.getCommand("get-item-permission")).setExecutor(new GetItemPermissionCommand());
             Objects.requireNonNull(this.getCommand("get-item-permission")).setTabCompleter(new GetItemPermissionCommand());
+            Objects.requireNonNull(this.getCommand("add-skill")).setExecutor(new AddSkillCommand());
             Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.registeringcommands.success"), true);
         }
         catch (NullPointerException e)
@@ -129,6 +146,7 @@ public final class HacknCore extends JavaPlugin
             Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.registeringevents.start"), true);
             Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
             Bukkit.getPluginManager().registerEvents(new Bed(this), this);
+            Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
             Logger.verbose(Logger.getMessage("hackncore.hackncore.onenable.registeringevents.success"), true);
         }
         catch (Exception e)

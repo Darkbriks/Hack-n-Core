@@ -18,13 +18,13 @@ public class GetItemPermissionCommand implements CommandExecutor, TabExecutor
 {
     // Commande qui renvoie le grade requis pour utiliser un item donné
     // Commande: /get-item-grade <item>
-    // Permission: paperPlugin.grade.see
+    // Permission: HacknCore.permission.see
     // Arguments: <item> - l'item dont on veut voir le grade requis
     // Exemple: /get-item-grade DIAMOND_SWORD
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args)
     {
         if (args.length != 1) { return false; }
-        if (!sender.hasPermission("paperPlugin.grade.see")) { return false; }
+        if (!sender.hasPermission("HacknCore.permission.see")) { return false; }
         if (Material.getMaterial(args[0]) == null) { return false; }
         //sender.sendMessage("Pour utiliser " + args[0] + ", le grade requis est: " + MaterialPermission.getPermissionDisplayName(args[0]));
         sender.sendMessage(Logger.getMessage("hackncore.permission.commands.getitempermissioncommand.oncommand.message", args[0], MaterialPermission.getPermissionDisplayName(args[0])));

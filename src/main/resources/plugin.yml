@@ -5,14 +5,25 @@ api-version: '1.21'
 authors: [ Darkbriks ]
 website: https://github.com/Darkbriks/Hack-n-Core
 
+softdepend: ["AuraSkills"]
+depend: ["PlaceholderAPI"]
+
 commands:
   get-item-permission:
     description: "Get the permission required to use an item."
     usage: /get-item-permission [item]
     permission: HacknCore.permission.see
     permission-message: "You do not have permission to see the permission of items."
+  add-skill:
+    description: "Add a skill from AuraSkills to a player."
+    usage: /add-skill [player] [skill]
+    permission: HacknCore.skill.add
+    permission-message: "You do not have permission to add a skill to a player."
 
 permissions:
   HacknCore.permission.see:
     description: "Allows the player to see the permission required to use an item."
     default: true
+  HacknCore.skill.add:
+    description: "Allows the player to add a skill from AuraSkills to a player."
+    default: op
